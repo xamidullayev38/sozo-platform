@@ -1,10 +1,24 @@
-import Button from '@mui/material/Button';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Sidebar from "./components/Sidebar";
 
 function App() {
   return (
-    <div style={{ padding: 40 }}>
-      <Button variant="contained">Salom MUI 🚀</Button>
-    </div>
+    <BrowserRouter>
+      <div style={{ display: "flex" }}>
+        <Sidebar />
+        <div style={{ flex: 1, padding: "30px", background: "#121212", color: "#fff" }}>
+          <Routes>
+            <Route path="/" element={<h1>Discover</h1>} />
+            <Route path="/watchlist" element={<h1>Watchlist</h1>} />
+            <Route path="/blog" element={<h1>Blog</h1>} />
+            <Route path="/artists" element={<h1>Artists</h1>} />
+            <Route path="/contact" element={<h1>Contact</h1>} />
+            <Route path="/help" element={<h1>Help Center</h1>} />
+            <Route path="/settings" element={<h1>Settings</h1>} />
+          </Routes>
+        </div>
+      </div>
+    </BrowserRouter>
   );
 }
 
