@@ -9,19 +9,22 @@ import {
   Phone,
   HelpOutline,
   Settings,
-  Check
+  Check,
 } from "@mui/icons-material";
 
+const mainColor = "#e50914"; // to'q qizil
+
 const Wrapper = styled(Box)(({ collapsed }) => ({
-  width: collapsed ? "80px" : "240px",
+  width: collapsed ? "82px" : "230px",
   height: "100vh",
-  background: "#0f0f0f",
-  color: "white",
+  background: "#0b0b0b",
+  color: "#fff",
   display: "flex",
   flexDirection: "column",
   justifyContent: "space-between",
-  padding: "24px 0",
-  transition: "width 0.3s ease"
+  padding: "20px 0",
+  transition: "width 0.25s ease",
+  borderRight: "1px solid #161616",
 }));
 
 const MenuWrapper = styled(Box)`
@@ -37,67 +40,69 @@ const MenuSubtitle = styled(Typography)`
 
 const MenuButton = styled(Button)`
   justify-content: flex-start;
-  gap: 14px;
-  padding: 10px 16px;
-  border-radius: 14px;
+  gap: 12px;
+  padding: 8px 14px;
+  border-radius: 12px;
   text-transform: none;
-  color: #cfcfcf;
+  color: #9e9e9e;
   width: 100%;
-  margin-bottom: 6px;
-  transition: all 0.25s ease;
+  margin-bottom: 4px;
+  font-weight: 500;
+  font-size: 14px;
+  position: relative;
+  transition: color 0.2s ease;
 
   &:hover {
-    background: #1a1a1a;
     color: #fff;
+    background: transparent;
   }
 
   &.active {
-    background: linear-gradient(90deg, rgba(245, 197, 24, 0.15), transparent);
-    color: #f5c518;
-    box-shadow: 0 0 12px rgba(245, 197, 24, 0.25);
+    color: ${mainColor};
+  }
+
+  &.active::before {
+    content: "";
+    position: absolute;
+    left: -16px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 3px;
+    height: 22px;
+    border-radius: 4px;
+    background: ${mainColor};
   }
 `;
 
 const IconBox = styled(Box)`
-  width: 36px;
-  height: 36px;
-  min-width: 36px;
-  border-radius: 10px;
-  background: #1a1a1a;
+  width: 30px;
+  height: 30px;
+  min-width: 30px;
+  border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #aaa;
+  color: #8a8a8a;
+  transition: color 0.2s ease;
 
   svg {
-    font-size: 20px;
+    font-size: 18px;
   }
 
   .active & {
-    background: #f5c518;
-    color: #000;
+    color: ${mainColor};
   }
 `;
 
 const Label = styled("span")(({ collapsed }) => ({
-  fontSize: "15px",
+  fontSize: "14px",
   fontWeight: 500,
   whiteSpace: "nowrap",
-  overflow: "hidden",
-  transition: "opacity 0.2s ease, width 0.2s ease",
+  transition: "0.2s",
   ...(collapsed && {
     opacity: 0,
-    width: 0
-  })
-}));
-
-const PlanBox = styled(Box)(({ collapsed }) => ({
-  margin: "20px 16px 0",
-  padding: "18px",
-  borderRadius: "16px",
-  background: "#151515",
-  textAlign: "center",
-  display: collapsed ? "none" : "block"
+    width: 0,
+  }),
 }));
 
 export default function Sidebar({ collapsed = false }) {
@@ -105,13 +110,13 @@ export default function Sidebar({ collapsed = false }) {
     { to: "/", label: "Discover", icon: <Home /> },
     { to: "/watchlist", label: "Watchlist", icon: <Movie /> },
     { to: "/blog", label: "Blog", icon: <Article /> },
-    { to: "/artists", label: "Artists", icon: <People /> }
+    { to: "/artists", label: "Artists", icon: <People /> },
   ];
 
   const bottomItems = [
     { to: "/contact", label: "Contact Us", icon: <Phone /> },
     { to: "/help", label: "Help Center", icon: <HelpOutline /> },
-    { to: "/settings", label: "Setting", icon: <Settings /> }
+    { to: "/settings", label: "Setting", icon: <Settings /> },
   ];
 
   return (
@@ -123,6 +128,7 @@ export default function Sidebar({ collapsed = false }) {
 
         {menuItems.map((item) => (
           <MenuButton
+            disableRipple
             key={item.to}
             component={NavLink}
             to={item.to}
@@ -136,6 +142,7 @@ export default function Sidebar({ collapsed = false }) {
 
         {bottomItems.map((item) => (
           <MenuButton
+            disableRipple
             key={item.to}
             component={NavLink}
             to={item.to}
@@ -145,28 +152,6 @@ export default function Sidebar({ collapsed = false }) {
           </MenuButton>
         ))}
       </MenuWrapper>
-
-      <PlanBox collapsed={collapsed}>
-        <Typography fontSize={13} color="#aaa" mb={1}>
-          Click the button below to see the plans
-        </Typography>
-        <Button
-          startIcon={<Check />}
-          variant="outlined"
-          sx={{
-            color: "#f5c518",
-            borderColor: "#f5c518",
-            borderRadius: "10px",
-            textTransform: "none",
-            "&:hover": {
-              borderColor: "#f5c518",
-              background: "rgba(245,197,24,0.1)"
-            }
-          }}
-        >
-          see plans
-        </Button>
-      </PlanBox>
     </Wrapper>
   );
 }

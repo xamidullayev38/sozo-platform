@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Sidebar from "./components/Sidebar";
+import Discover from "./pages/Discover";
 
 function App() {
   return (
@@ -8,7 +9,7 @@ function App() {
         <Sidebar />
         <div style={{ flex: 1, padding: "30px", background: "#121212", color: "#fff" }}>
           <Routes>
-            <Route path="/" element={<h1>Discover</h1>} />
+            <Route path="/" element={<Discover />} />
             <Route path="/watchlist" element={<h1>Watchlist</h1>} />
             <Route path="/blog" element={<h1>Blog</h1>} />
             <Route path="/artists" element={<h1>Artists</h1>} />
