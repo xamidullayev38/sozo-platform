@@ -7,7 +7,7 @@ function App() {
     <BrowserRouter>
       <div style={{ display: "flex" }}>
         <Sidebar />
-        <div style={{ flex: 1, padding: "30px", background: "#121212", color: "#fff" }}>
+        <div style={{ width: '80%',position: 'fixed',top: 0,right: 0, padding: "20px", background: "#121212", color: "#fff" }}>
           <Routes>
             <Route path="/" element={<Discover />} />
             <Route path="/watchlist" element={<h1>Watchlist</h1>} />

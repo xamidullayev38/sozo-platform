@@ -15,8 +15,11 @@ import {
 const mainColor = "#e50914"; // to'q qizil
 
 const Wrapper = styled(Box)(({ collapsed }) => ({
-  width: collapsed ? "82px" : "230px",
-  height: "100vh",
+  position: 'fixed',
+  top: 0,
+  left: 0,
+  width: collapsed ? "20%" : "100%",
+  minHeight: "100vh",
   background: "#0b0b0b",
   color: "#fff",
   display: "flex",

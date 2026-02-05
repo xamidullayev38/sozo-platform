@@ -20,13 +20,17 @@ import {
 const mainColor = "#e50914";
 
 const StyledAppBar = styled(AppBar)`
+position: sticky;
+top: 0;
+right: 0;
   background: linear-gradient(to bottom, #111, #0d0d0d);
   padding: 10px 24px;
-  background: rgba(15, 15, 15, 0.65);
+  background: rgba(5, 5, 5, 0.05);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   padding: 10px 24px;
+  margin-bottom: 20px;
 `;
 
 const Container = styled(Box)`

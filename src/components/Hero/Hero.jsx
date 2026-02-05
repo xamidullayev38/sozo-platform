@@ -1,8 +1,8 @@
 import React from "react";
 import { Box, styled } from "@mui/material";
 import HeroBanner from "./HeroBanner";
-import HotNews from "./HotNews";
-import Recommended from "./Recommended";
+import HotNews from "./Hot";
+import Recommended from "./Recommend";
 
 const Layout = styled(Box)`
   display: grid;
